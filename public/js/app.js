@@ -45143,7 +45143,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.prototype.$userId = document.querySe
     updateStatus: function updateStatus(status, id) {
       var _this3 = this;
 
-      window.axios.post('/api/cruds/update/' + id, { status: status }).then(function () {
+      window.axios.put('/api/cruds/update/' + id, { status: status }).then(function () {
         _this3.tasks.find(function (task) {
           return task.id === id;
         }).status = status;
@@ -45153,7 +45153,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.prototype.$userId = document.querySe
     del: function del(id) {
       var _this4 = this;
 
-      window.axios.post('/api/cruds/delete/' + id).then(function () {
+      window.axios.delete('/api/cruds/delete/' + id).then(function () {
         var index = _this4.tasks.findIndex(function (task) {
           return task.id === id;
         });

@@ -99,13 +99,13 @@ export default {
       }
     },
     updateStatus(status, id) {
-      window.axios.post(`/api/cruds/update/${id}`, { status }).then(() => {
+      window.axios.put(`/api/cruds/update/${id}`, { status }).then(() => {
         this.tasks.find(task => task.id === id).status = status;
         console.log('Success');
       });
     },
     del(id) {
-      window.axios.post(`/api/cruds/delete/${id}`).then(() => {
+      window.axios.delete(`/api/cruds/delete/${id}`).then(() => {
         let index = this.tasks.findIndex(task => task.id === id);
         this.tasks.splice(index, 1);
         console.log('Success');
