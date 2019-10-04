@@ -31,6 +31,7 @@
 </template>
 
 <script>
+import Vue from 'vue'; 
 Vue.prototype.$userId = document.querySelector("meta[name='user-id']").getAttribute('content');
 
 export default {
