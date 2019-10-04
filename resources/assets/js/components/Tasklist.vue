@@ -18,30 +18,29 @@
               <td style="width: 15%;">Status</td>
               <td style="width: 15%;">Action</td>
             </tr>
-              <li v-for="(task, index) in tasks" :task="task" :key="index">
-                <tr>
-                  <td>
-                    {{task.title}}
-                  </td>
-                  <td>
-                    {{task.description}}
-                  </td>
-                  <td>
-                    <span v-if="task.status == 2"> Finished </span>
-                    <span v-if="task.status == 3"> Working </span>
-                    <span v-if="task.status == 4"> Cancelled </span>
-                  </td>
-                  <td>
-                    <select>
-                      <option value="" disabled selected hidden>Choose action</option>
-                      <option value="2">Finished</option>
-                      <option value="3">Working</option>
-                      <option value="4">Cancel Task</option>
-                      <option value="5">Delete</option>
-                    </select>
-                  </td>
-                </tr>
-              </li>
+            <tr v-for="(task, index) in tasks" :task="task" :key="index">
+              <td>
+                {{task.title}}
+              </td>
+              <td>
+                {{task.description}}
+              </td>
+              <td>
+                <span v-if="task.status == 1"> Created </span>
+                <span v-if="task.status == 2"> Finished </span>
+                <span v-if="task.status == 3"> Working </span>
+                <span v-if="task.status == 4"> Cancelled </span>
+              </td>
+              <td>
+                <select>
+                  <option value="" disabled selected hidden>Choose action</option>
+                  <option value="2">Finished</option>
+                  <option value="3">Working</option>
+                  <option value="4">Cancel Task</option>
+                  <option value="5">Delete</option>
+                </select>
+              </td>
+            </tr>
           </table>
         </div>
     </div>

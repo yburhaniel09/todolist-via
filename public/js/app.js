@@ -45083,7 +45083,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.prototype.$userId = document.querySelector("meta[name='user-id']").getAttribute('content');
@@ -45233,40 +45232,32 @@ var render = function() {
           _vm._m(0),
           _vm._v(" "),
           _vm._l(_vm.tasks, function(task, index) {
-            return _c("li", { key: index, attrs: { task: task } }, [
-              _c("tr", [
-                _c("td", [
-                  _vm._v(
-                    "\n                " +
-                      _vm._s(task.title) +
-                      "\n              "
-                  )
-                ]),
+            return _c("tr", { key: index, attrs: { task: task } }, [
+              _c("td", [
+                _vm._v("\n            " + _vm._s(task.title) + "\n          ")
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _vm._v(
+                  "\n            " + _vm._s(task.description) + "\n          "
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                task.status == 1 ? _c("span", [_vm._v(" Created ")]) : _vm._e(),
                 _vm._v(" "),
-                _c("td", [
-                  _vm._v(
-                    "\n                " +
-                      _vm._s(task.description) +
-                      "\n              "
-                  )
-                ]),
+                task.status == 2
+                  ? _c("span", [_vm._v(" Finished ")])
+                  : _vm._e(),
                 _vm._v(" "),
-                _c("td", [
-                  task.status == 2
-                    ? _c("span", [_vm._v(" Finished ")])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  task.status == 3
-                    ? _c("span", [_vm._v(" Working ")])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  task.status == 4
-                    ? _c("span", [_vm._v(" Cancelled ")])
-                    : _vm._e()
-                ]),
+                task.status == 3 ? _c("span", [_vm._v(" Working ")]) : _vm._e(),
                 _vm._v(" "),
-                _vm._m(1, true)
-              ])
+                task.status == 4
+                  ? _c("span", [_vm._v(" Cancelled ")])
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _vm._m(1, true)
             ])
           })
         ],
