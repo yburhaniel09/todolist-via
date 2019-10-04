@@ -44570,7 +44570,7 @@ exports = module.exports = __webpack_require__(42)(false);
 
 
 // module
-exports.push([module.i, "\ndiv.add[data-v-530ee94c] {\n  text-align: center;\n}\ndiv.list[data-v-530ee94c] {\n  margin-top: 10px;\n}\ndiv.save[data-v-530ee94c] {\n  margin-top: 10px;\n  text-align: center;\n}\nli[data-v-530ee94c] {\n  list-style-type: none;\n}\n.taskList[data-v-530ee94c] {\n  width: 550px;\n}\n.done[data-v-530ee94c] {\n  width: 550px;\n  text-decoration: line-through;\n  color: gray;\n}\n.notDone[data-v-530ee94c] {\n  width: 550px;\n  text-decoration: none;\n}\n.button[data-v-530ee94c] {\n  width: 80px;\n}\n.savebutton[data-v-530ee94c] {\n  width: 120px;\n}\n\n\n", ""]);
+exports.push([module.i, "\ndiv.add[data-v-530ee94c] {\n  text-align: center;\n}\ndiv.list[data-v-530ee94c] {\n  margin-top: 10px;\n}\ndiv.save[data-v-530ee94c] {\n  margin-top: 10px;\n  text-align: center;\n}\nli[data-v-530ee94c] {\n  list-style-type: none;\n}\n.taskList[data-v-530ee94c] {\n  width: 100%;\n}\n.done[data-v-530ee94c] {\n  width: 550px;\n  text-decoration: line-through;\n  color: gray;\n}\n.notDone[data-v-530ee94c] {\n  width: 550px;\n  text-decoration: none;\n}\n.button[data-v-530ee94c] {\n  width: 80px;\n}\n.savebutton[data-v-530ee94c] {\n  width: 120px;\n}\n\n\n", ""]);
 
 // exports
 
@@ -45272,8 +45272,8 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.status,
-                        expression: "status"
+                        value: task.id,
+                        expression: "task.id"
                       }
                     ],
                     on: {
@@ -45287,9 +45287,13 @@ var render = function() {
                               var val = "_value" in o ? o._value : o.value
                               return val
                             })
-                          _vm.status = $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
+                          _vm.$set(
+                            task,
+                            "id",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
                         },
                         function($event) {
                           return _vm.update($event, task.id)
