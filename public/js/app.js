@@ -1860,6 +1860,8 @@ module.exports = function isBuffer (obj) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -1892,7 +1894,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-Vue.prototype.$userId = document.querySelector("meta[name='user-id']").getAttribute('content');
+
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.$userId = document.querySelector("meta[name='user-id']").getAttribute('content');
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -45683,15 +45686,14 @@ module.exports = function(module) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_Tasklist_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/Tasklist.vue */ "./resources/assets/js/components/Tasklist.vue");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
 __webpack_require__(/*! ./bootstrap */ "./resources/assets/js/bootstrap.js");
-
-window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -45699,8 +45701,10 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
  */
 
 
-Vue.component('tasklist', _components_Tasklist_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
-var app = new Vue({
+
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('tasklist', __webpack_require__(/*! ./components/Tasklist.vue */ "./resources/assets/js/components/Tasklist.vue"));
+window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app'
 });
 
