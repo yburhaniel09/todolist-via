@@ -59,8 +59,9 @@ class HomeController extends Controller
     {
         $todo = new Todo();
         $todo->title = $request->title;
+        $todo->description = $request->description;
         $todo->userid = $request->userId;
-        $todo->isDone = $request->completed;
+        $todo->status = $request->status;
     
         $todo->save();
     

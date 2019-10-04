@@ -1,7 +1,8 @@
 <template>
     <div>
         <div class="add">
-            <input class="taskList" type="text" v-model="newTask" placeholder="New task">
+            <input class="taskList" type="text" v-model="newTask" placeholder="Title">
+            <textarea v-model="newTaskDesc" placeholder="Description"></textarea>
             <span class="input-group-button">
                 <button class="button" @click="addTask">
                     Add
@@ -11,13 +12,19 @@
 
         <div class="list">
             <li v-for="(task, index) in tasks" :task="task" :key="index">
-                <label :class="{ 'done': task.completed, 'notDone': !task.completed }" v-if="task.edit == false">
-                  <input v-model="task.completed" type="checkbox" @click="updateDone(task.id, task.completed)"> {{task.title}}
+                <label>
+                  {{task.title}}
                 </label>
-                <input class="taskList" v-if="task.edit == true" type="text" v-model="task.title"/>
-                <button class="button" @click="task.edit = true" v-if="task.edit == false">Edit</button>
-                <button class="button" @click="update(task.id, task.title)" v-if="task.edit == true">Save</button>
-                <button class="button" @click="del(task.id)">Delete</button>
+                <label>
+                  {{task.description}}
+                </label>
+                <select v-model="task.status">
+                  <option value="1">Created</option>
+                  <option value="2">Finished</option>
+                  <option value="3">Working</option>
+                  <option value="4">Cancel Task</option>
+                  <option value="5">Delete</option>
+                </select>
             </li>
         </div>
     </div>
@@ -30,6 +37,7 @@ export default {
   data () {
     return {
         newTask: '',
+        newTaskDesc: '',
         tasks: []
     }
   },
@@ -41,8 +49,8 @@ export default {
           this.tasks.push({
             id: crud.id,
             title: crud.title,
-            completed: crud.isDone,
-            edit: false
+            description: crud.description,
+            status: crud.status
           });
         });
       });
@@ -51,23 +59,23 @@ export default {
       if (this.newTask) {
         window.axios.post('/api/cruds/create', {
           title: this.newTask,
-          completed: false,
+          description: this.newTaskDesc,
+          status: 1,
           userId: this.$userId
         }).then((response) => {
+          this.newTask = '';
+          this.newTaskDesc = '';
           this.read();
           console.log('Success');
         });
+      }
+      else {
+        alert("Title is required");
       }
     },
     update(id, title) {
       window.axios.post(`/api/cruds/update/${id}`, { title }).then(() => {
         this.tasks.find(task => task.id === id).edit = false;
-        console.log('Success');
-      });
-    },
-    updateDone(id, completed) {
-      window.axios.post(`/api/cruds/updateDone/${id}`, { completed: !completed }).then(() => {
-        this.tasks.find(task => task.id === id).completed = !completed;
         console.log('Success');
       });
     },
