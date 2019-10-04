@@ -13,14 +13,13 @@
         <div class="list">
           <table>
             <tr>
-              <td style="width: 25%;"><b>Title</b>/td>
+              <td style="width: 25%;"><b>Title</b></td>
               <td style="width: 45%;"><b>Description</b></td>
               <td style="width: 15%;"><b>Status</b></td>
               <td style="width: 15%;"><b>Action</b></td>
             </tr>
             <tr v-for="(task, index) in tasks" :task="task" :key="index">
               <td>
-                {{task.id}}
                 {{task.title}}
               </td>
               <td>
@@ -99,7 +98,7 @@ export default {
         this.updateStatus(status, id)
       }
     },
-    updateStatus(id, status) {
+    updateStatus(status, id) {
       window.axios.post(`/api/cruds/update/${id}`, { status }).then(() => {
         this.tasks.find(task => task.id === id).edit = false;
         console.log('Success');

@@ -45083,7 +45083,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.prototype.$userId = document.querySelector("meta[name='user-id']").getAttribute('content');
@@ -45141,7 +45140,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.prototype.$userId = document.querySe
         this.updateStatus(status, id);
       }
     },
-    updateStatus: function updateStatus(id, status) {
+    updateStatus: function updateStatus(status, id) {
       var _this3 = this;
 
       window.axios.post('/api/cruds/update/' + id, { status: status }).then(function () {
@@ -45242,13 +45241,7 @@ var render = function() {
           _vm._l(_vm.tasks, function(task, index) {
             return _c("tr", { key: index, attrs: { task: task } }, [
               _c("td", [
-                _vm._v(
-                  "\n            " +
-                    _vm._s(task.id) +
-                    "\n            " +
-                    _vm._s(task.title) +
-                    "\n          "
-                )
+                _vm._v("\n            " + _vm._s(task.title) + "\n          ")
               ]),
               _vm._v(" "),
               _c("td", [
@@ -45325,10 +45318,8 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("tr", [
-      _c("td", { staticStyle: { width: "25%" } }, [
-        _c("b", [_vm._v("Title")]),
-        _vm._v("/td>\n          ")
-      ]),
+      _c("td", { staticStyle: { width: "25%" } }, [_c("b", [_vm._v("Title")])]),
+      _vm._v(" "),
       _c("td", { staticStyle: { width: "45%" } }, [
         _c("b", [_vm._v("Description")])
       ]),
