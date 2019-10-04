@@ -17,7 +17,3 @@
     </div>
 </div>
 @endsection
-
-<script>
-import tasklist from './components/Tasklist.vue';
-</script>
