@@ -45678,9 +45678,12 @@ module.exports = function(module) {
 /*!************************************!*\
   !*** ./resources/assets/js/app.js ***!
   \************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_Tasklist_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/Tasklist.vue */ "./resources/assets/js/components/Tasklist.vue");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -45695,7 +45698,8 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('tasklist', __webpack_require__(/*! ./components/Tasklist.vue */ "./resources/assets/js/components/Tasklist.vue"));
+
+Vue.component('tasklist', _components_Tasklist_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
 var app = new Vue({
   el: '#app'
 });
