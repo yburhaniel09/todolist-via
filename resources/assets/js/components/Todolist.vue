@@ -5,7 +5,7 @@
             <textarea v-model="newTaskDesc" placeholder="Description"></textarea>
             <span class="input-group-button">
                 <button class="button" @click="addTask">
-                    Add
+                    Add task
                 </button>
             </span>
         </div>
