@@ -45067,6 +45067,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.prototype.$userId = document.querySelector("meta[name='user-id']").getAttribute('content');
@@ -45176,6 +45193,8 @@ var render = function() {
         }
       }),
       _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
       _c("textarea", {
         directives: [
           {
@@ -45185,6 +45204,7 @@ var render = function() {
             expression: "newTaskDesc"
           }
         ],
+        staticClass: "taskList",
         attrs: { placeholder: "Description" },
         domProps: { value: _vm.newTaskDesc },
         on: {
@@ -45197,6 +45217,8 @@ var render = function() {
         }
       }),
       _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
       _c("span", { staticClass: "input-group-button" }, [
         _c("button", { staticClass: "button", on: { click: _vm.addTask } }, [
           _vm._v("\n                Add task\n            ")
@@ -45204,69 +45226,93 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "list" },
-      _vm._l(_vm.tasks, function(task, index) {
-        return _c("li", { key: index, attrs: { task: task } }, [
-          _c("label", [
-            _vm._v("\n              " + _vm._s(task.title) + "\n            ")
-          ]),
+    _c("div", { staticClass: "list" }, [
+      _c(
+        "table",
+        [
+          _vm._m(0),
           _vm._v(" "),
-          _c("label", [
-            _vm._v(
-              "\n              " + _vm._s(task.description) + "\n            "
-            )
-          ]),
-          _vm._v(" "),
-          _c(
-            "select",
-            {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: task.status,
-                  expression: "task.status"
-                }
-              ],
-              on: {
-                change: function($event) {
-                  var $$selectedVal = Array.prototype.filter
-                    .call($event.target.options, function(o) {
-                      return o.selected
-                    })
-                    .map(function(o) {
-                      var val = "_value" in o ? o._value : o.value
-                      return val
-                    })
-                  _vm.$set(
-                    task,
-                    "status",
-                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+          _vm._l(_vm.tasks, function(task, index) {
+            return _c("li", { key: index, attrs: { task: task } }, [
+              _c("tr", [
+                _c("td", [
+                  _vm._v(
+                    "\n                " +
+                      _vm._s(task.title) +
+                      "\n              "
                   )
-                }
-              }
-            },
-            [
-              _c("option", { attrs: { value: "1" } }, [_vm._v("Created")]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "2" } }, [_vm._v("Finished")]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "3" } }, [_vm._v("Working")]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "4" } }, [_vm._v("Cancel Task")]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "5" } }, [_vm._v("Delete")])
-            ]
-          )
-        ])
-      }),
-      0
-    )
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _vm._v(
+                    "\n                " +
+                      _vm._s(task.description) +
+                      "\n              "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  task.status == 2
+                    ? _c("span", [_vm._v(" Finished ")])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  task.status == 3
+                    ? _c("span", [_vm._v(" Working ")])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  task.status == 4
+                    ? _c("span", [_vm._v(" Cancelled ")])
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _vm._m(1, true)
+              ])
+            ])
+          })
+        ],
+        2
+      )
+    ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", { staticStyle: { width: "25%" } }, [_vm._v("Title")]),
+      _vm._v(" "),
+      _c("td", { staticStyle: { width: "45%" } }, [_vm._v("Description")]),
+      _vm._v(" "),
+      _c("td", { staticStyle: { width: "15%" } }, [_vm._v("Status")]),
+      _vm._v(" "),
+      _c("td", { staticStyle: { width: "15%" } }, [_vm._v("Action")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("select", [
+        _c(
+          "option",
+          { attrs: { value: "", disabled: "", selected: "", hidden: "" } },
+          [_vm._v("Choose action")]
+        ),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "2" } }, [_vm._v("Finished")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "3" } }, [_vm._v("Working")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "4" } }, [_vm._v("Cancel Task")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "5" } }, [_vm._v("Delete")])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

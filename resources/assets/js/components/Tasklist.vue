@@ -1,8 +1,8 @@
 <template>
     <div>
         <div class="add">
-            <input class="taskList" type="text" v-model="newTask" placeholder="Title">
-            <textarea v-model="newTaskDesc" placeholder="Description"></textarea>
+            <input class="taskList" type="text" v-model="newTask" placeholder="Title"> <br>
+            <textarea class="taskList" v-model="newTaskDesc" placeholder="Description"></textarea> <br>
             <span class="input-group-button">
                 <button class="button" @click="addTask">
                     Add task
@@ -11,21 +11,38 @@
         </div>
 
         <div class="list">
-            <li v-for="(task, index) in tasks" :task="task" :key="index">
-                <label>
-                  {{task.title}}
-                </label>
-                <label>
-                  {{task.description}}
-                </label>
-                <select v-model="task.status">
-                  <option value="1">Created</option>
-                  <option value="2">Finished</option>
-                  <option value="3">Working</option>
-                  <option value="4">Cancel Task</option>
-                  <option value="5">Delete</option>
-                </select>
-            </li>
+          <table>
+            <tr>
+              <td style="width: 25%;">Title</td>
+              <td style="width: 45%;">Description</td>
+              <td style="width: 15%;">Status</td>
+              <td style="width: 15%;">Action</td>
+            </tr>
+              <li v-for="(task, index) in tasks" :task="task" :key="index">
+                <tr>
+                  <td>
+                    {{task.title}}
+                  </td>
+                  <td>
+                    {{task.description}}
+                  </td>
+                  <td>
+                    <span v-if="task.status == 2"> Finished </span>
+                    <span v-if="task.status == 3"> Working </span>
+                    <span v-if="task.status == 4"> Cancelled </span>
+                  </td>
+                  <td>
+                    <select>
+                      <option value="" disabled selected hidden>Choose action</option>
+                      <option value="2">Finished</option>
+                      <option value="3">Working</option>
+                      <option value="4">Cancel Task</option>
+                      <option value="5">Delete</option>
+                    </select>
+                  </td>
+                </tr>
+              </li>
+          </table>
         </div>
     </div>
 </template>
