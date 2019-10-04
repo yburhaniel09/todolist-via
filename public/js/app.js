@@ -45272,8 +45272,8 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: task.title,
-                        expression: "task.title"
+                        value: _vm.status[index],
+                        expression: "status[index]"
                       }
                     ],
                     on: {
@@ -45288,8 +45288,8 @@ var render = function() {
                               return val
                             })
                           _vm.$set(
-                            task,
-                            "title",
+                            _vm.status,
+                            index,
                             $event.target.multiple
                               ? $$selectedVal
                               : $$selectedVal[0]
