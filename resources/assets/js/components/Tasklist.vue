@@ -32,7 +32,7 @@
                 <span v-if="task.status == 4"> Cancelled </span>
               </td>
               <td>
-                <select v-model="status" @change="update($event, task.id)">
+                <select v-model="task.title" @change="update($event, task.id)">
                   <option value="" disabled selected hidden>Choose action</option>
                   <option value="2">Finished</option>
                   <option value="3">Working</option>
