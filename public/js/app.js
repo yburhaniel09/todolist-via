@@ -45133,10 +45133,17 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.prototype.$userId = document.querySe
         alert("Title is required");
       }
     },
-    update: function update(id, title) {
+    update: function update(status, id) {
+      if (status == 5) {
+        this.del(id);
+      } else {
+        this.updateStatus(status, id);
+      }
+    },
+    updateStatus: function updateStatus(id, status) {
       var _this3 = this;
 
-      window.axios.post('/api/cruds/update/' + id, { title: title }).then(function () {
+      window.axios.post('/api/cruds/update/' + id, { status: status }).then(function () {
         _this3.tasks.find(function (task) {
           return task.id === id;
         }).edit = false;
@@ -45257,7 +45264,46 @@ var render = function() {
                   : _vm._e()
               ]),
               _vm._v(" "),
-              _vm._m(1, true)
+              _c("td", [
+                _c(
+                  "select",
+                  {
+                    on: {
+                      change: function($event) {
+                        return _vm.update(this.value, task.id)
+                      }
+                    }
+                  },
+                  [
+                    _c(
+                      "option",
+                      {
+                        attrs: {
+                          value: "",
+                          disabled: "",
+                          selected: "",
+                          hidden: ""
+                        }
+                      },
+                      [_vm._v("Choose action")]
+                    ),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "2" } }, [
+                      _vm._v("Finished")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "3" } }, [
+                      _vm._v("Working")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "4" } }, [
+                      _vm._v("Cancel Task")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "5" } }, [_vm._v("Delete")])
+                  ]
+                )
+              ])
             ])
           })
         ],
@@ -45272,35 +45318,19 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("tr", [
-      _c("td", { staticStyle: { width: "25%" } }, [_vm._v("Title")]),
+      _c("td", { staticStyle: { width: "25%" } }, [
+        _c("b", [_vm._v("Title")]),
+        _vm._v("/td>\n          ")
+      ]),
+      _c("td", { staticStyle: { width: "45%" } }, [
+        _c("b", [_vm._v("Description")])
+      ]),
       _vm._v(" "),
-      _c("td", { staticStyle: { width: "45%" } }, [_vm._v("Description")]),
+      _c("td", { staticStyle: { width: "15%" } }, [
+        _c("b", [_vm._v("Status")])
+      ]),
       _vm._v(" "),
-      _c("td", { staticStyle: { width: "15%" } }, [_vm._v("Status")]),
-      _vm._v(" "),
-      _c("td", { staticStyle: { width: "15%" } }, [_vm._v("Action")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("select", [
-        _c(
-          "option",
-          { attrs: { value: "", disabled: "", selected: "", hidden: "" } },
-          [_vm._v("Choose action")]
-        ),
-        _vm._v(" "),
-        _c("option", { attrs: { value: "2" } }, [_vm._v("Finished")]),
-        _vm._v(" "),
-        _c("option", { attrs: { value: "3" } }, [_vm._v("Working")]),
-        _vm._v(" "),
-        _c("option", { attrs: { value: "4" } }, [_vm._v("Cancel Task")]),
-        _vm._v(" "),
-        _c("option", { attrs: { value: "5" } }, [_vm._v("Delete")])
-      ])
+      _c("td", { staticStyle: { width: "15%" } }, [_c("b", [_vm._v("Action")])])
     ])
   }
 ]

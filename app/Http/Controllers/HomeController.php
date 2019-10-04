@@ -100,7 +100,7 @@ class HomeController extends Controller
     public function update(Request $request, $id)
     {
         $todo = Todo::findOrFail($id);
-        $todo->title = $request->title;
+        $todo->status = $request->status;
         $todo->save();
 
         return response(null, Response::HTTP_OK);

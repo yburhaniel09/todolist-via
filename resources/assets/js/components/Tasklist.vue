@@ -13,10 +13,10 @@
         <div class="list">
           <table>
             <tr>
-              <td style="width: 25%;">Title</td>
-              <td style="width: 45%;">Description</td>
-              <td style="width: 15%;">Status</td>
-              <td style="width: 15%;">Action</td>
+              <td style="width: 25%;"><b>Title</b>/td>
+              <td style="width: 45%;"><b>Description</b></td>
+              <td style="width: 15%;"><b>Status</b></td>
+              <td style="width: 15%;"><b>Action</b></td>
             </tr>
             <tr v-for="(task, index) in tasks" :task="task" :key="index">
               <td>
@@ -32,7 +32,7 @@
                 <span v-if="task.status == 4"> Cancelled </span>
               </td>
               <td>
-                <select>
+                <select @change="update(this.value, task.id)">
                   <option value="" disabled selected hidden>Choose action</option>
                   <option value="2">Finished</option>
                   <option value="3">Working</option>
@@ -90,8 +90,16 @@ export default {
         alert("Title is required");
       }
     },
-    update(id, title) {
-      window.axios.post(`/api/cruds/update/${id}`, { title }).then(() => {
+    update(status, id) {
+      if (status == 5){
+        this.del(id);
+      }
+      else {
+        this.updateStatus(status, id)
+      }
+    },
+    updateStatus(id, status) {
+      window.axios.post(`/api/cruds/update/${id}`, { status }).then(() => {
         this.tasks.find(task => task.id === id).edit = false;
         console.log('Success');
       });
