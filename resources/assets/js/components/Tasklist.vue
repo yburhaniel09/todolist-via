@@ -32,7 +32,7 @@
                 <span v-if="task.status == 4"> Cancelled </span>
               </td>
               <td>
-                <select @change="update(this.value, task.id)">
+                <select v-model="status" @change="update($event, task.id)">
                   <option value="" disabled selected hidden>Choose action</option>
                   <option value="2">Finished</option>
                   <option value="3">Working</option>
@@ -90,12 +90,12 @@ export default {
         alert("Title is required");
       }
     },
-    update(status, id) {
-      if (status == 5){
+    update(e, id) {
+      if (e.target.value == 5){
         this.del(id);
       }
       else {
-        this.updateStatus(status, id)
+        this.updateStatus(e.target.value, id);
       }
     },
     updateStatus(status, id) {

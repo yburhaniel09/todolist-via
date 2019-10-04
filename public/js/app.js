@@ -45133,11 +45133,11 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.prototype.$userId = document.querySe
         alert("Title is required");
       }
     },
-    update: function update(status, id) {
-      if (status == 5) {
+    update: function update(e, id) {
+      if (e.target.value == 5) {
         this.del(id);
       } else {
-        this.updateStatus(status, id);
+        this.updateStatus(e.target.value, id);
       }
     },
     updateStatus: function updateStatus(status, id) {
@@ -45268,10 +45268,33 @@ var render = function() {
                 _c(
                   "select",
                   {
-                    on: {
-                      change: function($event) {
-                        return _vm.update(this.value, task.id)
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.status,
+                        expression: "status"
                       }
+                    ],
+                    on: {
+                      change: [
+                        function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.status = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        },
+                        function($event) {
+                          return _vm.update($event, task.id)
+                        }
+                      ]
                     }
                   },
                   [
