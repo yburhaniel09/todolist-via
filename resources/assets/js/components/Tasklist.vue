@@ -100,7 +100,7 @@ export default {
     },
     updateStatus(status, id) {
       window.axios.post(`/api/cruds/update/${id}`, { status }).then(() => {
-        this.tasks.find(task => task.id === id).edit = false;
+        this.tasks.find(task => task.id === id).status = status;
         console.log('Success');
       });
     },

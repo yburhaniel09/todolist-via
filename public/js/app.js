@@ -45146,7 +45146,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.prototype.$userId = document.querySe
       window.axios.post('/api/cruds/update/' + id, { status: status }).then(function () {
         _this3.tasks.find(function (task) {
           return task.id === id;
-        }).edit = false;
+        }).status = status;
         console.log('Success');
       });
     },
