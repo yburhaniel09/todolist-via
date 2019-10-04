@@ -15,8 +15,7 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-import Tasklist from './components/Tasklist.vue';
-Vue.component('tasklist',Tasklist);
+Vue.component('tasklist', require('./components/Tasklist.vue'));
 
 const app = new Vue({
     el: '#app'
