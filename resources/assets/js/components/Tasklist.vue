@@ -20,6 +20,7 @@
             </tr>
             <tr v-for="(task, index) in tasks" :task="task" :key="index">
               <td>
+                {{task.id}}
                 {{task.title}}
               </td>
               <td>
