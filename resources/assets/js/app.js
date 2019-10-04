@@ -17,7 +17,7 @@ window.Vue = require('vue');
 
 
 Vue.component(
-    'todolist', require('./components/Todolist.vue')
+    'tasklist', require('./components/Tasklist.vue')
 );
 
 const app = new Vue({
